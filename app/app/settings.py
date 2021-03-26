@@ -119,3 +119,30 @@ STATICFILES_DIRS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+LOGGING = {
+    'version': 1,
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG'
+        },
+        'my_logs': {
+            'handlers': ['my_logs_file'],
+            'level': 'DEBUG',
+        }
+    },
+    'handlers': {
+       'file': {
+           'level': 'INFO',
+           'class': 'logging.FileHandler',
+           'filename': '/app/logs/log.log'
+       },
+       'my_logs_file': {
+           'level': 'INFO',
+           'class': 'logging.FileHandler',
+           'filename': '/app/logs/log2.log'
+       },
+       
+    },
+}
