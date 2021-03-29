@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <canvas id="myChart" width="400" height="400"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script>
+
+        var ctx = document.getElementById('myChart');
+        let stats_obj = {{ stats|safe }};
+        let datasets = [];
+        Object.keys(stats_obj).forEach(method => {
+            let this_method = stats_obj[method];
+            let data = [];
+            console.log(this_method)
+            for(var i = 0; i<this_method["stats"].length; i++) {
+                data.push({
+                    t: new Date(this_method["stats"][i]["x"]),
+                    y: this_method["stats"][i]["y"]
+                });
+            }
+            datasets.push({
+                label: method,
+                data: data,
+                backgroundColor: [
+                    this_method["backgroundColor"],
+                ],
+                borderColor: [
+                    this_method["backgroundColor"],
+                ],
+                borderWidth: 1,
+                
+            });
+        });
+        console.log(datasets);
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: datasets,
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                animation: {
+                    easing: 'easeInOutQuad',
+                    duration: 520
+                },
+                layout: {
+                    padding: 10,
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: 'rgba(200, 200, 200, 0.05)',
+                            lineWidth: 1
+                        },
+                        type: 'time',
+                        distribution: 'series',
+                        time: {
+                            unit: 'minute'
+                        },
+                        ticks: {
+                            max: new Date(),
+                            min: new Date(new Date().getTime() - (60 * 60 * 1000)),
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            // Include a dollar sign in the ticks
+                            callback: function(value, index, values) {
+                                return value + " sn";
+                            }
+                        }
+                    }]
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Radar Chart',
+                    fontColor: 'white'
+                },
+                point: {
+                    backgroundColor: 'white'
+                },
+                
+            },
+        });
+    </script>
+{% endblock content %}
+
+

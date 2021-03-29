@@ -1,6 +1,7 @@
 from django.urls import path
 
 from logs.views import (
+    LogsView,
     LogListAPIView,
     LogPostAPIView,
 )
@@ -9,6 +10,7 @@ from logs.views import (
 app_name = "logs"
 
 urlpatterns = [
-    path('', LogListAPIView.as_view(), name="list"),
-    path('detail/', LogPostAPIView.as_view(), name="post")
+    path('', LogsView.as_view(), name="stats"),
+    path('api/', LogListAPIView.as_view(), name="list"),
+    path('api/detail/', LogPostAPIView.as_view(), name="post")
 ]

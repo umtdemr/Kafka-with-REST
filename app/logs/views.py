@@ -1,3 +1,5 @@
+from django.views.generic import TemplateView
+
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework.response import Response
@@ -38,4 +40,14 @@ class LogPostAPIView(APIView):
         return Response(
             {"detail": "delete log has writed"}
         )
+
+
+class LogsView(TemplateView):
+    template_name = "index.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["stats"] = Log.objects.get_one_hour_stats()
+        context["all_stats"] = Log.objects.all()
+        return context
     
