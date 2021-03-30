@@ -21,6 +21,7 @@ services:
       - DB_NAME=app
       - DB_USER=postgres
       - DB_PASS=supersecretpassword
+      - REDIS_HOST=redis
     depends_on: 
       - db
   

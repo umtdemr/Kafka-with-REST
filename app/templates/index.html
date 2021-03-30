@@ -90,6 +90,50 @@
             },
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // WebSocket bağlantısı kur
+            /*const notifierSocket = new WebSocket(
+                    "ws://" + window.location.host + "/notifications"
+                );
+        */
+            const noteSocket = new WebSocket(
+            "ws://" + window.location.host + "/logs"
+            );
+            // Bağlantı kurulduğunda
+            /* notifierSocket.addEventListener("open", function (event) {
+                    notifierSocket.send("Sunucuya bağlanıldı. from js");
+                });
+    
+                // Mesaj alındığında
+                notifierSocket.addEventListener("message", function (event) {
+                    console.log("Mesaj alındı: ", event.data);
+                });
+        */
+            // noteSocket
+            noteSocket.addEventListener("open", function (event) {
+            noteSocket.send("Sunucuya bağlanıldı. from js");
+            });
+    
+            // Mesaj alındığında
+            noteSocket.addEventListener("message", function (event) {
+            console.log("Mesaj alındı: ", event.data);
+            try {
+                data = JSON.parse(event.data);
+                // console.log(data["message"]);
+            } catch (e) {
+                console.log(e);
+            }
+                console.log(typeof data);
+            });
+    
+            // Mesaj gönder
+            // socket.send('Merhaba!');
+    
+            // Bağlantıyı bitir
+            // socket.close(1000, 'Güle güle.');
+        });
+        </script>
 {% endblock content %}
 
 
