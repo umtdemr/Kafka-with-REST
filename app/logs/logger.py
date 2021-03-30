@@ -17,7 +17,6 @@ def write_log(method: str, ms: int):
         )
     )
     logger.info(f'{method},{ms},{date_timestamp}')
-    print("SELAMMM")
     Log.objects.create(
         method=method,
         ms=ms,
