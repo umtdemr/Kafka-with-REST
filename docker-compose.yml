@@ -1,11 +1,10 @@
 version: '3'
 
 services:
-  redis:
-    image: redis
-    command: redis-server
-    ports: 
-      - "6379:6379"
+  app-redis:
+    container_name: kartaca-redis
+    image: redis:6-alpine
+
   app:
     build:
         context: .
@@ -21,9 +20,10 @@ services:
       - DB_NAME=app
       - DB_USER=postgres
       - DB_PASS=supersecretpassword
-      - REDIS_HOST=redis
+      - REDIS_URL=redis://kartaca-redis:6379/0
     depends_on: 
       - db
+      - app-redis
   
   db:
     image: postgres:10-alpine

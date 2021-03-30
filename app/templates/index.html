@@ -120,6 +120,7 @@
             console.log("Mesaj alındı: ", event.data);
             try {
                 data = JSON.parse(event.data);
+                console.log(data)
                 // console.log(data["message"]);
             } catch (e) {
                 console.log(e);
