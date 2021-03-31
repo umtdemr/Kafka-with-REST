@@ -22,7 +22,6 @@ class LogConsumer(AsyncJsonWebsocketConsumer):
         )
 
     async def log_gossip(self, event):
-        print("-*-------------")
-        print(event)
+        print("------------------------")
         await self.send_json(event)
-        print(f"Got message {event} at {self.channel_name}")
+        print(f"Got message at {self.channel_name}")

@@ -4,6 +4,12 @@ import json
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
+
 
 from . import LogChoices
 
@@ -45,7 +51,7 @@ class LogManager(models.Manager):
                 "x": str(request.created_at),
                 "y": float(request.ms / 1000)
             })
-        return json.dumps(stats_dict)
+        return stats_dict
 
 
 class Log(models.Model):
@@ -75,3 +81,20 @@ class Log(models.Model):
     
     def __str__(self):
         return self.method
+
+
+@receiver(post_save, sender=Log)
+def log_signal(sender, instance, created, **kwargs):
+    if created:
+        print("CREATED EQUAL TO TRUE")
+        channel_layer = get_channel_layer()
+        print("channel_layer:", channel_layer)
+        print(instance)
+        async_to_sync(channel_layer.group_send)(
+            "gossip",
+            {
+                "type": "log.gossip",
+                "event": "New Log",
+                "data": Log.objects.get_one_hour_stats()
+            },
+        )
