@@ -4,6 +4,8 @@ import random
 
 from django.utils import timezone
 
+from logs.models import Log
+
 logger = logging.getLogger('my_logs')
 
 
@@ -14,8 +16,12 @@ def write_log(method: str, ms: int):
             date_now.timetuple(),
         )
     )
-
     logger.info(f'{method},{ms},{date_timestamp}')
+    Log.objects.create(
+        method=method,
+        ms=ms,
+        timestamp=date_timestamp,
+    )
 
 
 def generate_random() -> int:
