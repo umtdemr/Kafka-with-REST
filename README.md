@@ -27,7 +27,7 @@ Projeyi çalışabilir hale getirmek için bilgisayarınızda olması gerekenler
 ## Nasıl Test Edebilirim
 
 1. İlk olarak bir tarayıcı sekmesinde http://127.0.0.1:8000/ adresini açın.
-2. Daha sonra **_Projenin Endpoint Adresleri_** başlığında belirtilen en belirtilen http://127.0.0.1:8000/api/ ve http://127.0.0.1:8000/api/detail/ adreslerine ister tarayıcı ile ister curl isterseniz de istediğiniz bir REST test yazılımı ile istek atın. Örnek curl isteği: 
+2. Daha sonra **_Projenin Endpoint Adresleri_** başlığında belirtilen http://127.0.0.1:8000/api/ ve http://127.0.0.1:8000/api/detail/ adreslerine ister tarayıcı ile ister curl isterseniz de istediğiniz bir REST test yazılımı ile istek atın. Örnek curl isteği: 
 ```bash
     curl -v http://127.0.0.1:8000/api/
 ```
