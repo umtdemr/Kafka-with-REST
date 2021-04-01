@@ -53,5 +53,14 @@ Loglar app klasörü içinde log2.log dosyasına yazılmaktadır. (log.log djang
 
 Bir diğer yapamadığım kısım ise log2.log dosyasına yazılmış logları async bir job kullanarak veritabanına yazmak. Bunun yerine logları yazarken aynı anda veritabanına da yazdım yani ayrıyetten bir async job kullanmadım.
 
+
+
+##### Nasıl Decode ettim
+
+[decoder](https://github.com/umtdemr/Kafka-with-REST/tree/master/decoder/) klasörü içerisinde nasıl decode ettiğimi açıkladım.
+
+
+----
+
 > Bana Özel Anahtar Kodu: gAAAAABgUIxXF4bmNdBSgo-uWzS2-e0IJ6SDkh_zOhT4u6J0yaghEbcV4OkdCxJXocCAh_-8A6MTT9zRkS-khwpqD1MCd-zw1w-4e2JWOttUAfdTGYrhkTYpQWCKm_ArxP54Bw-WD-_2Pt9Ms04o6bCkyp2aGEc7GgpQJkpSULBV9tt8mcn2SxCqwMs8YVYLSsPdMGzArrZ0
 
