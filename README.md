@@ -45,22 +45,4 @@ Projeyi çalışabilir hale getirmek için bilgisayarınızda olması gerekenler
     - Bu endpoint istatistiklerin canlı olarak güncellenmesi için oluşturulmuştur. Tüm istek tiplerinin son 1 saat içerisinde ne kadar sürede tamamlandıkları bilgisi burdan çekiliyor.
 
 
-## Kartaca İçin Notlar;
-
-Loglar app klasörü içinde log2.log dosyasına yazılmaktadır. (log.log djangonun kendi logları)
-
-Üzülerek belirtmeliyim ki her ne kadar docker-compose.yml dosyası içinde kafka ve zookeeper imagelarını yazsamda proje esnasında kullanamadım. Kafkayı ilk defa görev içeriğini gördükten sonra test etme şansım oldu dolayısıyla fazla deneyimim olmadığı için django ile entegre edemedim. 
-
-Bir diğer yapamadığım kısım ise log2.log dosyasına yazılmış logları async bir job kullanarak veritabanına yazmak. Bunun yerine logları yazarken aynı anda veritabanına da yazdım yani ayrıyetten bir async job kullanmadım.
-
-
-
-##### Nasıl Decode ettim
-
-[decoder](https://github.com/umtdemr/Kafka-with-REST/tree/master/decoder/) klasörü içerisinde nasıl decode ettiğimi açıkladım.
-
-
-----
-
-> Bana Özel Anahtar Kodu: gAAAAABgUIxXF4bmNdBSgo-uWzS2-e0IJ6SDkh_zOhT4u6J0yaghEbcV4OkdCxJXocCAh_-8A6MTT9zRkS-khwpqD1MCd-zw1w-4e2JWOttUAfdTGYrhkTYpQWCKm_ArxP54Bw-WD-_2Pt9Ms04o6bCkyp2aGEc7GgpQJkpSULBV9tt8mcn2SxCqwMs8YVYLSsPdMGzArrZ0
 
