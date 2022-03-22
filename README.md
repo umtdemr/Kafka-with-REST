@@ -3,7 +3,7 @@
 
 ## Gereksinimler
 
-Projeyi çalışabilir hale getirmek için bilgisayarınızda olması gerekenler;
+Projeyi çalıştırmak için bağımlılıklar;
 
 * Docker
 * docker-compose
